@@ -49,9 +49,11 @@ const Category = () => {
 
   return (
     <div className="py-10 mr-10 ml-10">
-      <motion.h1 className="flex justify-center items-center text-2xl text-gray-800 font-bodyFont font-semibold">
+      <h1 className="flex justify-center items-center text-2xl text-gray-800 font-bodyFont font-semibold">
         Product Category
-      </motion.h1>
+      </h1>
+
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -59,7 +61,7 @@ const Category = () => {
         viewport={{ once: false, amount: 0.25 }}
         className="flex flex-col"
       >
-        <div className="my-10 w-full  flex flex-col gap-y-5 items-center justify-center md:flex-row gap-x-2 min-h-[70vh]">
+        <div className="my-10 w-full  flex flex-col gap-y-5 items-center justify-center md:flex-row gap-x-2 min-h-[70vh] relative">
           {ProductCat.map((item, id) => (
             <div key={id}>
               <ProductCategory

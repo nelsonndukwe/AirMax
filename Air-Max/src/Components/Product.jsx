@@ -47,7 +47,7 @@ const Product = () => {
                     alt="options"
                     className="w-[90px] object-cover rounded-xl"
                     key={index}
-                    onClick={() => handlechange(index)}
+                    onMouseEnter={() => handlechange(index)}
                   />
                 </motion.div>
               );
