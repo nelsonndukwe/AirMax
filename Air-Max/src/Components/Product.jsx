@@ -21,8 +21,7 @@ const Product = () => {
       <div className="max-w-screen-xl mx-auto my-10 flex gap-12 items-center">
         <div className="w-2/5 relative">
           <motion.img
-           
-            src={imageList[color]} 
+            src={imageList[color]}
             alt="productimag"
             className="w-full object-cover "
           />
@@ -30,18 +29,20 @@ const Product = () => {
 
         <div className="w-3/5 relative">
           <div>
-            <p className="text-2xl font-titleFont font-semibold my-5">{title}</p>
+            <p className="text-2xl font-titleFont font-semibold my-5">
+              {title}
+            </p>
           </div>
           <p>{category} Shoes</p>
 
-          <motion.div layout 
-          exit={{opacity:0, x:-100}}
-          className="flex items-center gap-1 my-5">
+          <motion.div
+            layout
+            exit={{ opacity: 0, x: -100 }}
+            className="flex items-center gap-1 my-5"
+          >
             {imageList.map((option, index) => {
               return (
-                <motion.div 
-               
-                whileTap={{ scale: 0.8 }} key={index}>
+                <motion.div whileTap={{ scale: 0.8 }} key={index}>
                   <img
                     src={option}
                     alt="options"
@@ -76,12 +77,28 @@ const Product = () => {
             {desc}
           </p>
 
-          <button className="flex items-center bg-black text-white py-3 px-6 active:bg-gray-800 gap-2 my-5">
-            Add To Cart
-            <span>
-              <MdOutlineShoppingCartCheckout /> 
-            </span>
-          </button>
+          <div className="flex items-center gap-4 text-sm font-semibold ">
+            <button
+              className="border h-5 gap-5 font-normal text-lg flex items-center justify-center px-2 
+                hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+            >
+              -
+            </button>
+            <span>1</span>
+            <button
+              className="border h-5 gap-5 font-normal text-lg flex items-center justify-center px-2 
+                hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+            >
+              +
+            </button>
+
+            <button className="flex items-center bg-black text-white py-3 px-6 active:bg-gray-800 gap-2 my-5">
+              Add To Cart
+              <span>
+                <MdOutlineShoppingCartCheckout />
+              </span>
+            </button>
+          </div>
 
           <p className="text-base text-gray-500 flex items-center gap-1 my-5">
             Category{" "}
@@ -91,7 +108,9 @@ const Product = () => {
             <span className="font-medium capitalize">{category}</span>
           </p>
 
-          <p className="absolute top-6 right-12  bg-black text-white py-2 px-4 active:bg-gray-800 rounded-md">{Company}</p>
+          <p className="absolute top-6 right-12  bg-black text-white py-2 px-4 active:bg-gray-800 rounded-md">
+            {Company}
+          </p>
         </div>
       </div>
     </div>
