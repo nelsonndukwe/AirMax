@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { MdOutlineFavorite } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -58,9 +58,9 @@ const Header = () => {
             </div>
           </Link>
 
-          <Link to="/favorite">
+          <Link to="/favorites">
             <div>
-              <AiOutlineHeart className="text-[25px] text-black hover:text-red-800 duration-300 " />
+              <MdOutlineFavorite className="text-[25px] text-orange-800 hover:text-red-800 duration-300 " />
             </div>
           </Link>
         </div>

@@ -44,7 +44,7 @@ const Trending = () => {
                 <h1 className="px-3 pt-3">{item.title}</h1>
                 <div className="px-3 pt-3 flex justify-between items-center ">
                   <p className="text-black font-semibbold font-titleFont">
-                    {item.price}
+                    ${item.price}
                   </p>
                 </div>
 

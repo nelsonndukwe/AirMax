@@ -14,6 +14,7 @@ import Login from "./Pages/Login";
 import Women from './Pages/Women'
 import Men from './Pages/Men'
 import Children from './Pages/Children'
+import Favorites from "./Pages/Favorites";
 
 
 const Layout = () => {
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
       {
         path: "/children",
         element: <Children />,
+      },
+
+      {
+        path: "/favorites",
+        element: <Favorites />,
       },
     ],
   },
