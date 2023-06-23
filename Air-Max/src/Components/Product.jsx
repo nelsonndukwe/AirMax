@@ -5,17 +5,24 @@ import { AiFillStar } from "react-icons/ai";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import { AiFillCaretRight } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/AirmaxSlice";
 
 const Product = () => {
   const [color, setColor] = useState(0);
+const [number, setNumber] = useState(1)
 
+
+
+  const dispatch = useDispatch();
   const id = useParams();
   const details = Sneakers.find((single) => single.id == id.id);
-  const { title, desc, price, imageList, category, Company } = details;
+  const { title, desc, price, imageList, category, Company, image } = details;
 
   const handlechange = (key) => {
     setColor(key);
   };
+
   return (
     <div>
       <div className="max-w-screen-xl mx-auto my-10 flex gap-12 items-center">
@@ -79,20 +86,38 @@ const Product = () => {
 
           <div className="flex items-center gap-4 text-sm font-semibold ">
             <button
+              onClick={() =>
+                setNumber(number === 1 ? (number = 1) : number - 1)
+              }
               className="border h-5 gap-5 font-normal text-lg flex items-center justify-center px-2 
                 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
             >
               -
             </button>
-            <span>1</span>
+            <span>{number}</span>
             <button
+              onClick={() => setNumber(number + 1)}
               className="border h-5 gap-5 font-normal text-lg flex items-center justify-center px-2 
                 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
             >
               +
             </button>
 
-            <button className="flex items-center bg-black text-white py-3 px-6 active:bg-gray-800 gap-2 my-5">
+            <button
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    _id: id,
+                    title: title,
+                    image: image,
+                    price: price,
+                    quantity: number,
+                    description: desc,
+                  })
+                ) & toast.success(`${item.title} is added to cart`)
+              }
+              className="flex items-center bg-black text-white py-3 px-6 active:bg-gray-800 gap-2 my-5"
+            >
               Add To Cart
               <span>
                 <MdOutlineShoppingCartCheckout />

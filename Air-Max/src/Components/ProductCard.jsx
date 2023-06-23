@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const ProductCard = () => {
   const [filterItems, setFilterItems] = useState(Sneakers);
+  
 
   const selectFilter = (selectItems) => {
     const updatedFilter = Sneakers.filter((items) => {

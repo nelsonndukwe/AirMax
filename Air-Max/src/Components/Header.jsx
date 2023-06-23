@@ -1,9 +1,12 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { SlBag } from "react-icons/sl";
+import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+  const productData = useSelector((state) => state.airmax.productData);
   return (
     <div
       className="w-full h-10 flex justify-around items-center  font-titleFont sticky top-0 z-50 py-7 border-b-[1px]
@@ -46,16 +49,18 @@ const Header = () => {
         <div className="flex items-center justify-evenly gap-6 ">
           <Link to="cart">
             <div className="relative">
-              <SlBag className="text-2xl text-black hover:text-blue-600 duration-300 " />
-              <p className="absolute top-[3.5px] left-[8.5px] font-bodyFont text-sm ">
-                1
+              <FiShoppingCart className="text-[25px] text-black hover:text-blue-600 duration-300 " />
+              <div>
+              <p className="absolute top-[-10px] bg-red-800 left-[14px] font-bodyFont text-[12.586px] rounded-full px-[1px] py-[1px] text-white">
+                {productData.length}
               </p>
+                </div>
             </div>
           </Link>
 
           <Link to="/favorite">
             <div>
-              <AiOutlineHeart className="text-2xl text-black hover:text-red-800 duration-300 " />
+              <AiOutlineHeart className="text-[25px] text-black hover:text-red-800 duration-300 " />
             </div>
           </Link>
         </div>

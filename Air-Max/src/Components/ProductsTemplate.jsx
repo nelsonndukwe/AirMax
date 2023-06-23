@@ -2,8 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TfiShoppingCartFull } from "react-icons/tfi";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/AirmaxSlice";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const ProductsTemplate = ({ item, index }) => {
+
+  const dispatch = useDispatch()
+
   return (
     <motion.div
       layout
@@ -28,7 +35,7 @@ const ProductsTemplate = ({ item, index }) => {
             />
           </div>
         </Link>
-        <h1 className="px-3 pt-3">{item.title}</h1>
+        <h1 className="px-3 pt-3">{item.title.substring(0, 24)}</h1>
         <div className="px-3 pt-3 flex justify-between items-center ">
           <p className="text-black font-semibbold font-titleFont">
             {item.price}
@@ -43,6 +50,18 @@ const ProductsTemplate = ({ item, index }) => {
             scale: 0.8,
             
           }}
+          onClick={() =>
+            dispatch(
+              addToCart({
+                _id: item.id,
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                quantity: 1,
+                description: item.desc,
+              })
+            ) & toast.success(`${item.title} is added to cart`)
+          }
 
           className="absolute right-3 bottom-[60.8px] text-xl"
         >
@@ -56,6 +75,22 @@ const ProductsTemplate = ({ item, index }) => {
           )}
         </div>
       </motion.div>
+
+
+      <ToastContainer
+     position="top-left"
+     autoClose={2000}
+     hideProgressBar={false}
+     newestOnTop={false}
+     closeOnClick
+     rtl={false}
+     pauseOnFocusLoss
+     draggable
+     pauseOnHover
+
+
+
+/>
     </motion.div>
   );
 };
